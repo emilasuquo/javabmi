@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <div class="text-center">
+        <h1>BMI calculatore</h1>
+        <p class="text">Height</p>
+        <input type="text" id="H" />
+        <p class="text">Weight</p>
+        <input type="text" id="W" />
+        <p id="result"></p>
+        <button id="btn" onclick="BMI()">calculate</button>
+        <p id="info">Alaye enter height in CM and weight in KG</p>
+
+    </div>
+ 
+    <script type="text/javascript">
+        function BMI() {
+            var H=document.getElementById("H").value;
+            var W = document.getElementById("W").value;
+            var BMI = W / (H / 100 * H / 100);
+            var BMIo = (BMI.tofixed(2))
+
+            if (BMIo < 18.5)
+
+                document.getElementById("result").innerHTML = "Your BMI is" + BMIo + " You are underweight";
+            else
+                if (BMIo < 25)
+                    document.getElementById("result").innerHTML = "Your BMI is" + BMIo +" You are normal weight";
+                else
+                    if (BMIo < 30)
+                        document.getElementById("result").innerHTML = "Your BMI is" + BMIo + " You are overweight";
+                    else
+                        if (BMIo > 30)
+                            document.getElementById("result").innerHTML = "Your BMI is" + BMIo + " You are obesed";
+         
+        }
+    </script>
+        
